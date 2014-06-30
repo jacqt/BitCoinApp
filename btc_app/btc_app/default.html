@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>btc_app</title>
+
+    <!-- WinJS references -->
+    <!-- At runtime, ui-themed.css resolves to ui-themed.light.css or ui-themed.dark.css 
+    based on the user’s theme setting. This is part of the MRT resource loading functionality. -->
+    <link href="/css/ui-themed.css" rel="stylesheet" />
+    <script src="//Microsoft.Phone.WinJS.2.1/js/base.js"></script>
+    <script src="//Microsoft.Phone.WinJS.2.1/js/ui.js"></script>
+
+    <!-- btc_app references -->
+    <link href="/css/default.css" rel="stylesheet" />
+    <script src="/js/default.js"></script>
+
+    <!-- Coin Data List-->
+    <script src="/js/coinDataListView.js"></script>
+
+</head>
+<body class="phone">
+    <!-- Template for items in the coin listView-->
+    <div id="coinListViewTemplate" data-win-control="WinJS.Binding.Template">
+        <div style="width: 282px; display: -ms-grid;">
+            <div style="margin: 5px; -ms-grid-column: 2">
+                <!-- Displays the "btc_symbol" field. -->
+                <h4 data-win-bind="innerText: btc_symbol"></h4>
+
+                <!-- Displays the "btc_price" field. -->
+                <h6 data-win-bind="innerText: btc_price"></h6>
+            </div>
+        </div>
+    </div>
+
+    <h1>Bitcoin App Test</h1>
+	<div id="coinListView"
+         style="left: 0px;"
+         data-win-control="WinJS.UI.ListView" 
+         data-win-options="
+             {
+                itemDataSource : CoinDataSpace.itemList.dataSource,
+                itemTemplate: select('#coinListViewTemplate'),
+                layout : {type : WinJS.UI.GridLayout}
+            }">
+    </div>
+</body>
+</html>
